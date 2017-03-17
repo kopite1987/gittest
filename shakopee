@@ -84,3 +84,23 @@ Version: "2012-10-17"
     
  remember: instance profile is created and role is created and this instanfe profile/policy is added to role
  
+ 
+ 
+ #########
+ codepipeline
+  - is continuous delivery service. Provides tools to model, visualize and automate
+  the many steps that are reqd. as part of software release process
+  
+  
+  
+  software release process:
+  
+  source files ( codecommit, s3, github)
+  build ( jenkins )
+  deployment ( codedeploy)
+  t3esting ( apica, testers, ec2 )
+  deployment - codedeploy
+  production - > ec2
+  
+  everything is called codepipeline
+  
