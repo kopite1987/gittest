@@ -1,0 +1,86 @@
+code commit -> create a new repository
+aws codecommit create-repository --repository-name <Mydemorepo> --repository-description "<My demonstration repository>:
+
+aws codecommit list-repositories
+aws codecommit get-repository --repository=name <reponame>
+
+
+#to view attribute of repository
+aws codecommit batch-get-repositories --repository-names <repo1> <repo2>
+
+#to update repo name
+aws codecommit update-repository-name --old-name <repo1> --new-name <repo2>
+
+#to update repository description
+aws codecommit update-repository-description --repository-name <myrepo1> --repository-description "updated description"
+
+aws codecommit get-repository --repository-name <myreponame
+
+
+Note: non-git based version control systems
+
+Perforce, subversion or TFS
+
+
+#####migrating a repository into codeCommit
+1. create a new repo. in AWS Codecommit
+#aws codecommit create-repository --repository-name mymigratedrepo --repository-description "my repo description"
+
+
+2. clone the repo to local machine ( into temp deirectory )
+#git clone --mirror <repo to migrate url> < local temp dir>
+e.g
+git clone --mirror https://githu.com/branch/Githubrepo.git /temp/
+
+3. push cloned github repo to aws codecommit reo
+git push https://git-codecommit.us-east-1.amazonaws.com/v1/repos/MymigratedRepo --all
+
+
+4. delete the temporary directory that housed the cloned github repo on local machine
+rm -rf mytempdirformigraion
+
+5. clone AWS codecommit repo that we migrated to our local machine
+git clone https://git-codecommit.us-east-1.amazonaws.com/v1/repos/Mymigratedrepo mylocaldirecotry
+
+
+
+##########
+codedeploy
+aws service for automating the deployment process of your applications,
+from git-based version control systems or S3 buckets to EC2 instances , on-premise instance or both
+
+
+
+
+codedeploy:workflow
+to deploy -------> aws ec2 deployment group
+
+
+codedeploy: setup and configuration
+1. provision an IAM user with custom CodeDeploy Policy 
+  - gives a non-admin user the rights to manage all elements needed to use CodeDeploy
+  
+2. Create an instance profile
+    - allows to launch EC2 instance that are configured for use with code deploy
+    
+3. create a service role
+  - allows CodeDeploy to communicate and interact with other AWS service
+  
+4. install aws CLI
+
+
+
+steps:
+1. to create IAM use with custom policy, create policy first
+
+{
+Version: "2012-10-17"
+"Statement": {
+  "Effect": "Allow"
+  "Action": {
+    "Autoscaling": "*"
+    
+    
+    
+ remember: instance profile is created and role is created and this instanfe profile/policy is added to role
+ 
