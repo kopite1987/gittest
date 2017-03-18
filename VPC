@@ -1,0 +1,84 @@
+Benefits of VPC:
+  - Ability to launch instances into subnet
+  - Ability to define Custom IP address ranges inside of each subnet (private and public)
+  - Ability to configure route tables between subnets
+  - Ability to configure internet gateways and attach them to subnets
+  - Ability to create a layered n/w of resources
+  - Extending our network with VPN/VPG controlled access
+  - Ability to use security groups and subnet network ACLs
+  
+  
+  
+  Default VPC: default VPC that Amazon provides. Comes with Public IP
+  
+  Non-Default VPC: 
+    - non-default VPCs have Private IP address but not public IP Address
+    - can only access resources through EIP, VPNs, or gateway instances.
+    - do not have internet gateways attached by default
+    
+   
+   
+   VPC Peering - allows to setup direct n/w route between VPC using private IP addresses
+   VPC peering can occur between other AWS accounts and other VPCs within the same region
+   
+   
+   VPC scenarios:
+   VPC with public subnet only - single tier
+   VPC with public and private subnets - resources that don't need public internet access/layered apps
+   VPC with public and private subnets and h/w connected VPN - extending to on-premises
+   VPC with a private subnet only and h/w VPN access
+   
+   VPC limits:
+   5 VPC per region
+   200 subnets per VPC
+   50 Customer Gateways per region
+   5 IGW per region
+   5 EIP per region
+   50 VPN connections
+   200 route table per region
+   
+   
+   
+   
+   Steps:
+   1. Create VPC 
+      NameTag: linuxtest
+      CidrBlock: 10.0.0.0/16
+      Tenancy: Default
+      
+   2. Create 3 Subnets in different AZ:
+      NameTag: 10.0.1.0
+      VPC: linuxtest
+      AZ: us-east-2a
+      CidrBlock: 10.0.1.0/24
+      
+     NameTag: 10.0.2.0
+     VPC: linuxtest
+     AZ: us-east-2b
+     CidrBlock: 10.0.2.0/24
+   
+      NT: 10.0.3.0
+      VPC: linuxtest
+      AZ: us-east-2c
+      CidrBlock: 10.0.3.0/24
+      
+  3. Create Route Table:
+      NT: linuxtest-route
+      VPC: linuxtest
+      
+      
+  4. Create IGW and attach to VPC 
+  
+  5.  now goto routetable and add route: 
+  
+  
+  ##to login to instance in private subnet from the public subnet instance
+  scp -i vpc.pem vpc.pem ec2-user@x.x.x.x:~/
+  
+  now we have vpc.pem inside ec2 instance
+  
+  
+  
+      
+      
+      
