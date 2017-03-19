@@ -80,5 +80,10 @@ Benefits of VPC:
   
   
       
-      
+ ###we can use ssh forwarding
+ ssh-add -K vpc.pem 
+ ssh -A ec2-user@<publicip>
+ ...$ssh -A ec2-user@<privateip>
+ 
+ 
       
