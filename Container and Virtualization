@@ -1,0 +1,21 @@
+What will we disucss?
+  - Containers and Virtual Machines
+  - Container Orchestration and Tools ( Kubernets, DockerSwarm, Mesos) and its overview 
+
+
+As a Dev-Ops engineer, we have the responsibility to setup and manage end-to-end stack like combination of Webserver, a database, Messaging System, Orchestration tools like Puppet/Ansible etc. Using Traditional method to develop applications using these different 
+components is a tall ask due to several different considerations like underlying OS compatiblilty, their libraries and its OS dependency ( A situation like one service requires a certain version of a dependent library as compared to another service that requires
+entirely different version of library). Another issue with managing this stack is the upgrade and managing the changes within one component of stack. For example, we want to upgrade database to new version, and this requires compatibilty check of this new version 
+with other components of the stack and more often than not, it results in issues.The traditional approach is cumbersome and time consuming. 
+
+Hence, a solution that can allow us to modify these individual components of a stack without impacting other components or even modify the underlying OS components would be able to solve the above issues. Docker is a good solution to the traditional approach of
+managing a end-to-end stack. 
+Advantage of Docker:
+  - Run each component in a separate container - with its own libraries and Dependencies
+  - All components run on the same VM and OS, but within their own separate environment. 
+
+Containers are isolated environment that have their own process or services, own network interfaces, mount points. So how is it different than the Virtual machines??
+Docker containers, unlike Virtual machines share the same OS kernel. Before docker we had LXC, LXD, LXCFS etc. Docker utilizes LXC containers. 
+What is Operating System? - OS consists of two things: an OS kernel and a set of software. Kernel interacts with underlying Hardware. So, on different Unix based OS like Fedora, Ubuntu, Suse or centos, OS kernel remains same- which is linux in this case, its the
+Software above the kernel that makes these Operating Systems different. Software may consist of different User interface, Drivers, Compilers, Developer tools. In short, We have common Linux kernel shared across all Operating Systems and within each OS we have
+custome softwares that differentiate which flavor of linux OS it is. 
